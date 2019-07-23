@@ -56,7 +56,7 @@ pub enum WarningMessage {
     /// The end tag does not match the last start tag. Rewinding.
     UnexpectedEndTagRewinding,
 
-    /// An end tag was found with no preceeding start tag.
+    /// An end tag was found with no preceding start tag.
     UnexpectedEndTag,
 
     /// Expected heading of higher level. Correcting start of heading.
@@ -91,7 +91,7 @@ impl WarningMessage {
                 "The end tag does not match the last start tag. Rewinding."
             }
             WarningMessage::UnexpectedEndTag => {
-                "An end tag was found with no preceeding start tag."
+                "An end tag was found with no preceding start tag."
             }
             WarningMessage::UnexpectedHeadingLevelCorrecting => {
                 "Expected heading of higher level. Correcting start of heading."
