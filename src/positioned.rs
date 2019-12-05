@@ -84,3 +84,23 @@ impl<'a> crate::Positioned for crate::Node<'a> {
         }
     }
 }
+
+// This assumes that the Vec is not empty and that the start and end values
+// of the nodes in it are in order.
+impl<'a> crate::Positioned for Vec<crate::Node<'a>> {
+    fn end(&self) -> usize {
+        if let Some(node) = self.last() {
+            node.end()
+        } else {
+            0
+        }
+    }
+    
+    fn start(&self) -> usize {
+        if let Some(node) = self.first() {
+            node.start()
+        } else {
+            0
+        }
+    }
+}

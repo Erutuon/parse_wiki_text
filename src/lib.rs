@@ -135,6 +135,7 @@ use state::{OpenNode, OpenNodeType, State};
 use std::{
     borrow::Cow,
     collections::{HashMap, HashSet},
+    ops::Range,
 };
 use trie::Trie;
 pub use warning::{Warning, WarningMessage};
@@ -534,6 +535,16 @@ pub trait Positioned {
 
     /// The byte position in the wiki text where the element starts.
     fn start(&self) -> usize;
+    
+    /// The range of byte positions in the wiki text where the element starts and ends.
+    fn range(&self) -> Range<usize> {
+        self.start()..self.end()
+    }
+    
+    /// Retrieve the wiki text for the element by byte range.
+    fn get_text_from<'a>(&self, text: &'a str) -> &'a str {
+        &text[self.range()]
+    }
 }
 
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
